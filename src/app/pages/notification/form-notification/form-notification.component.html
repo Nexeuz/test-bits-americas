@@ -1,0 +1,65 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Create a custom notification</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+      <form
+      [formGroup]="form">
+      <mat-form-field
+      class="width-100"
+       appearance="outline">
+        <mat-label>Title</mat-label>
+        <input
+           required
+           placeholder="type a title that you want show in notification"
+          formControlName="title"
+          type="text"
+          matInput>
+      </mat-form-field>
+       <mat-form-field
+       class="width-100"
+        appearance="outline">
+         <mat-label>Message</mat-label>
+         <input
+            required
+            placeholder="type a message that you want show in notification"
+           formControlName="message"
+           type="text"
+           matInput>
+       </mat-form-field>
+       <mat-form-field
+          class="width-100"
+          appearance="outline">
+          <mat-label>Direction</mat-label>
+          <mat-select
+            formControlName="direction"
+            placeholder="Choose an option" >
+              <mat-option
+                *ngFor="let direction of directionArr"
+                [value]="direction.value">{{ direction.description }}</mat-option>
+            </mat-select>
+       </mat-form-field>
+       <mat-form-field
+       class="width-100"
+       appearance="outline">
+       <mat-label>Timing (in Miliseconds)</mat-label>
+        <input
+        placeholder="type timing in miliseconds"
+        formControlName="timing"
+        type="number"
+        matInput>
+    </mat-form-field>
+     </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      color="accent"
+      (click)="createNotification()"
+      [disabled]="form.invalid"
+      mat-button
+      type="button">
+        Show custom toast
+    </button>
+  </mat-card-actions>
+</mat-card>
+
